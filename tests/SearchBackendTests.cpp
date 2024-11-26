@@ -40,7 +40,7 @@ TEST_F(SearchBackendTests, SearchTest_Error)
 
     QSignalSpy spy{sut.get(), &SearchBackend::error};
 
-    sut->search("");
+    sut->search("asd");
     EXPECT_EQ(spy.count(), 1);
     EXPECT_EQ(spy.takeFirst().at(0).toString(), errorMsg);
 }
@@ -62,7 +62,7 @@ TEST_F(SearchBackendTests, SearchTest_ErrorIfSuccessFieldInJson)
     });
 
     QSignalSpy spy{sut.get(), &SearchBackend::error};
-    sut->search("");
+    sut->search("asd");
     EXPECT_EQ(spy.count(), 1);
     EXPECT_EQ(spy.takeFirst().at(0).toString(), errorMsg);
 }
@@ -85,7 +85,7 @@ TEST_F(SearchBackendTests, SearchTest_DataReceived)
     });
 
     QSignalSpy spy{sut.get(), &SearchBackend::done};
-    sut->search("");
+    sut->search("asd");
     EXPECT_EQ(spy.count(), 1);
 }
 
@@ -98,6 +98,6 @@ TEST_F(SearchBackendTests, SearchTest_IncompleteDataReceived)
     });
 
     QSignalSpy spy{sut.get(), &SearchBackend::error};
-    sut->search("");
+    sut->search("asd");
     EXPECT_EQ(spy.count(), 1);
 }
